@@ -26,3 +26,23 @@
         </p>
     </div>
 </template>
+
+
+<template name="questions">
+    <hr>
+    <h2>Questions list:</h2>
+    {{#each items}}
+        {{>question}}
+    {{/each}}
+</template>
+
+
+<template name="addQuestion">
+    <br/><br/>
+    <textarea rows="3" class="input-xxlarge" name="questionText" id="questionText"
+              placeholder="Express your questions"></textarea>
+
+    <input type="button" class="btn-info add-question" value="Add Question"/><br/>
+
+
+</template>

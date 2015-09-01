@@ -1,10 +1,20 @@
+<template name="loginNormal">
+    {{#if currentUser}}
+        {{currentUser.username}} -
+        <button id="logout">Logout</button>
+    {{else}}
+        {{>loginButtons}}
+    {{/if}}
+</template>
 
-<template name = "login">
+
+<template name="login">
     {{#if currentUser}}
         {{currentUser.services.facebook.name}} -
         {{currentUser.services.facebook.gender}}
         <button id="facebook-logout">Logout</button>
-        {{>addQuestion}}
+        {{>addQuestion}}<br/>
+        {{>portrait}}
     {{else}}
         <button id="facebook-login" class="btn btn-default">Login with Facebook</button>
     {{/if}}

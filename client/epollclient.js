@@ -146,6 +146,45 @@ Template.answer.events({
 
     }
 });
+Template.login.events({
+    'click #facebook-login': function (event) {
+        Meteor.loginWithFacebook({}, function (err) {
+            if (err) {
+                throw new Meteor.Error("facebook login failed");
+            }
+        });
+    },
+
+    'click #facebook-logout': function (event) {
+        Meteor.logout(function (err) {
+            if (err) {
+                throw new Meteor.Error("Logout failed");
+            }
+        });
+    }
+});
+
+/*Template.portraits.helpers({
+ items: function () {
+ var userId = Meteor.users.find({}, {fields: {"services.facebook.id": 1}});
+ console.log(userId);
+
+ }
+ });*/
+
+Template.portrait.helpers({
+
+
+    items: function () {
+        /*       if (Meteor.user().services.facebook) {
+
+         return "https://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture?type=small";
+         }*/
+
+        return Meteor.users.find({}, {fields: {"services.facebook.id": 1}});
+
+    }
+});
 
 // Template.loginFacebook.events({
 
@@ -196,20 +235,4 @@ function CanVote(answerId) {
     }
 };
 
-Template.login.events({
-    'click #facebook-login': function(event){
-        Meteor.loginWithFacebook({},function(err){
-            if(err){
-                throw new Meteor.Error("facebook login failed");
-            }
-        });
-    },
 
-    'click #facebook-logout': function(event){
-        Meteor.logout(function(err){
-            if (err){
-                throw new Meteor.Error("Logout failed");
-            }
-        });
-    }
-});
