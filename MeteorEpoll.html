@@ -1,0 +1,136 @@
+<head>
+    <title>
+        Share your opinion...
+    </title>
+</head>
+
+<body>
+
+
+<div class="container" id="main">
+
+
+    {{#if currentUser}}
+        {{>addQuestion}}
+    {{/if}}
+
+
+    {{#unless currentUser}}
+        {{>banner}}
+    {{/unless}}
+
+    {{>questions}}
+
+</div>
+
+<div class="footer">
+    <p>&copy;2015 iHealthLabs Europe Inc. All rights reserved.</p>
+</div>
+
+</body>
+
+<!--<template name="hello">
+    <input type="button" value="Click me">
+</template>-->
+
+<template name="banner">
+
+    <div class="container">
+        <div class="row">
+            <div class="span6">
+                <div class="well">
+                    <h4>Hi every iHealthLabsEu staffs,that a good place for fun!
+                    </h4>
+                    {{>loginNormal}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="loginFacebook">
+    {{#if currentUser}}
+        {{currentUser.services.facebook.name}} -
+        {{currentUser.services.facebook.gender}}&nbsp;
+        <img src="https://graph.facebook.com/{{currentUser.services.facebook.id}}/picture?type=small" />
+        <button id="logout">Logout</button>
+    {{else}}
+        <button id="facebook-login" class="btn btn-default"> Login with Facebook</button>
+    {{/if}}
+</template>
+
+<template name="loginNormal">
+    {{#if currentUser}}
+        {{currentUser.username}} -
+        <button id="logout">Logout</button>
+    {{else}}
+        {{>loginButtons}}
+    {{/if}}
+</template>
+
+<template name="addQuestion">
+    {{>loginNormal}}
+    <br/><br/>
+    <textarea rows="3" class="input-xxlarge" name="questionText" id="questionText"
+              placeholder="Express your questions"></textarea>
+
+    <input type="button" class="btn-info add-question" value="Add Question"/><br/>
+
+
+</template>
+
+
+
+<template name="questions">
+    <hr>
+    <h2>Questions list:</h2>
+    {{#each items}}
+        {{>question}}
+    {{/each}}
+</template>
+
+
+<template name="question">
+    <div>
+        <p class="lead">
+
+        <div>{{questionText}}&nbsp;<p style="display: inline;font-size:xx-small">PostBy:</p>
+            {{{author}}}&nbsp;&nbsp;
+
+            {{#if isOwner}}
+                <a class="btn btn-small delete {{#unless currentUser}}disabled{{/unless}}"
+                   href="#"><i class="icon-remove-sign"></i>Delete</a>
+            {{/if}}
+
+        </div>
+
+            <textarea rows="1" name="answerText{{this_id}}"
+                      id="answerText{{this._id}}"
+                      placeholder="Add your answer"></textarea>
+        <input type="button" class="btn add-answer" value="+"/>
+        <br/>
+
+        {{#each answers}}
+            {{>answer}}
+            <br/>
+        {{/each}}
+
+        </p>
+    </div>
+</template>
+
+
+<template name="answer">
+    {{answerText}}
+    <a class="btn btn-small btn-success yes"
+       href="#"><i class="icon-thumbs-up"></i>Yes </a>
+
+    <a class="btn btn-small btn-danger no"
+       href="#"><i class="icon-thumbs-up"></i>No</a>
+
+    <b>{{num}}</b>
+</template>
+
+
+
+

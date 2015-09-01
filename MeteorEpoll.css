@@ -1,0 +1,18 @@
+/* CSS declarations go here */
+/* CSS declarations go here */
+.login-display-name{color: white }
+.login-button{background-color: white}
+#main {
+    padding-top:20px;
+    overflow: auto;
+    overflow-x: hidden;
+    height: 600px;
+}
+
+.footer {
+    position: fixed;
+    height: 50px;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
