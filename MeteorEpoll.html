@@ -10,14 +10,9 @@
 <div class="container" id="main">
 
 
-    {{#if currentUser}}
-        {{>addQuestion}}
-    {{/if}}
-
-
-    {{#unless currentUser}}
-        {{>banner}}
-    {{/unless}}
+    <div id="containerFacebook">
+        {{>login}}
+    </div>
 
     {{>questions}}
 
@@ -33,31 +28,21 @@
     <input type="button" value="Click me">
 </template>-->
 
-<template name="banner">
+<!--==============================================Login with facebook begins==============================================-->
 
-    <div class="container">
-        <div class="row">
-            <div class="span6">
-                <div class="well">
-                    <h4>Hi every iHealthLabsEu staffs,that a good place for fun!
-                    </h4>
-                    {{>loginNormal}}
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
-
-<template name="loginFacebook">
+<template name = "login">
     {{#if currentUser}}
-        {{currentUser.services.facebook.name}} -
-        {{currentUser.services.facebook.gender}}&nbsp;
-        <img src="https://graph.facebook.com/{{currentUser.services.facebook.id}}/picture?type=small" />
-        <button id="logout">Logout</button>
+        {{currentUser.services.facebook.name}} - 
+        {{currentUser.services.facebook.gender}}
+        <button id="facebook-logout">Logout</button>
+        {{>addQuestion}}
     {{else}}
-        <button id="facebook-login" class="btn btn-default"> Login with Facebook</button>
+        <button id="facebook-login" class="btn btn-default">Login with Facebook</button>
     {{/if}}
 </template>
+
+
+<!--==============================================Login with facebook ends==============================================-->
 
 <template name="loginNormal">
     {{#if currentUser}}
@@ -69,7 +54,6 @@
 </template>
 
 <template name="addQuestion">
-    {{>loginNormal}}
     <br/><br/>
     <textarea rows="3" class="input-xxlarge" name="questionText" id="questionText"
               placeholder="Express your questions"></textarea>

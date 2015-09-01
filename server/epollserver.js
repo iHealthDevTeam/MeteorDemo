@@ -28,7 +28,7 @@ Meteor.methods({
             //'submittedBy': Meteor.user().profile.name + "_" + Meteor.userId()
             'submittedBy': Meteor.userId(),
             //'submittedUser': Meteor.user().services.facebook.name
-            'submittedUser':Meteor.user().username
+            'submittedUser':Meteor.user().profile.name
 
         });
         return questionId;
