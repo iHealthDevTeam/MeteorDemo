@@ -30,90 +30,20 @@
 
 <!--==============================================Login with facebook begins==============================================-->
 
-<template name = "login">
-    {{#if currentUser}}
-        {{currentUser.services.facebook.name}} - 
-        {{currentUser.services.facebook.gender}}
-        <button id="facebook-logout">Logout</button>
-        {{>addQuestion}}
-    {{else}}
-        <button id="facebook-login" class="btn btn-default">Login with Facebook</button>
-    {{/if}}
-</template>
-
 
 <!--==============================================Login with facebook ends==============================================-->
 
-<template name="loginNormal">
-    {{#if currentUser}}
-        {{currentUser.username}} -
-        <button id="logout">Logout</button>
-    {{else}}
-        {{>loginButtons}}
-    {{/if}}
-</template>
-
-<template name="addQuestion">
-    <br/><br/>
-    <textarea rows="3" class="input-xxlarge" name="questionText" id="questionText"
-              placeholder="Express your questions"></textarea>
-
-    <input type="button" class="btn-info add-question" value="Add Question"/><br/>
-
-
-</template>
 
 
 
-<template name="questions">
-    <hr>
-    <h2>Questions list:</h2>
-    {{#each items}}
-        {{>question}}
-    {{/each}}
-</template>
 
 
-<template name="question">
-    <div>
-        <p class="lead">
-
-        <div>{{questionText}}&nbsp;<p style="display: inline;font-size:xx-small">PostBy:</p>
-            {{{author}}}&nbsp;&nbsp;
-
-            {{#if isOwner}}
-                <a class="btn btn-small delete {{#unless currentUser}}disabled{{/unless}}"
-                   href="#"><i class="icon-remove-sign"></i>Delete</a>
-            {{/if}}
-
-        </div>
-
-            <textarea rows="1" name="answerText{{this_id}}"
-                      id="answerText{{this._id}}"
-                      placeholder="Add your answer"></textarea>
-        <input type="button" class="btn add-answer" value="+"/>
-        <br/>
-
-        {{#each answers}}
-            {{>answer}}
-            <br/>
-        {{/each}}
-
-        </p>
-    </div>
-</template>
 
 
-<template name="answer">
-    {{answerText}}
-    <a class="btn btn-small btn-success yes"
-       href="#"><i class="icon-thumbs-up"></i>Yes </a>
 
-    <a class="btn btn-small btn-danger no"
-       href="#"><i class="icon-thumbs-up"></i>No</a>
 
-    <b>{{num}}</b>
-</template>
+
+
 
 
 

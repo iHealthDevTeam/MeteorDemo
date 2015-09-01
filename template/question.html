@@ -1,0 +1,28 @@
+<template name="question">
+    <div>
+        <p class="lead">
+
+        <div>{{questionText}}&nbsp;<p style="display: inline;font-size:xx-small">PostBy:</p>
+            {{{author}}}&nbsp;&nbsp;
+
+            {{#if isOwner}}
+                <a class="btn btn-small delete {{#unless currentUser}}disabled{{/unless}}"
+                   href="#"><i class="icon-remove-sign"></i>Delete</a>
+            {{/if}}
+
+        </div>
+
+            <textarea rows="1" name="answerText{{this_id}}"
+                      id="answerText{{this._id}}"
+                      placeholder="Add your answer"></textarea>
+        <input type="button" class="btn add-answer" value="+"/>
+        <br/>
+
+        {{#each answers}}
+            {{>answer}}
+            <br/>
+        {{/each}}
+
+        </p>
+    </div>
+</template>
