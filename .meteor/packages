@@ -13,3 +13,6 @@ bootstrap
 service-configuration
 theduke:bootstrap-modal-prompt
 accounts-facebook
+aslagle:reactive-table
+iron:router
+mrt:moment

@@ -1,0 +1,27 @@
+<template name="admin">
+    {{#if isAdministrator}}
+        <a href="{{pathFor 'admin'}}">Go to Administrator</a>
+    {{/if}}
+</template>
+
+<template name="adminBoard">
+
+    <head>
+        <title>
+            Manger users...
+        </title>
+    </head>
+    <body>
+
+    <div class="container" id="main">
+        {{>reactiveTable  class="table table-borded table-hover"
+        collection=users settings=settings}}
+        <a href="{{pathFor 'home'}}">Back main page</a>
+    </div>
+    </body>
+
+    <div class="footer">
+        <p>&copy;2015 iHealthLabs Europe Inc. All rights reserved.</p>
+    </div>
+
+</template>

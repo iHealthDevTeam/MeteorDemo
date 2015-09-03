@@ -2,14 +2,12 @@
  * Created by shen on 15/9/1.
  */
 
-/**
- * Created by shen on 15/8/24.
- */
+
 
 Questions = new Mongo.Collection("questions");
 Answers = new Mongo.Collection("answers");
 Votes = new Mongo.Collection("votes");
-
+Permissions = new Mongo.Collection("permissions");
 
 Meteor.startup(function () {
     // code to run on server at startup
@@ -17,6 +15,17 @@ Meteor.startup(function () {
 
 });
 
+Router.map(function () {
+    this.route('home', {
+        path: '/',  //overrides the default '/home'
+        template: "home"
+    });
+    this.route('admin', {
+
+        path: '/admin',
+        template: "adminBoard"
+    });
+});
 
 Meteor.methods({
 
@@ -28,7 +37,7 @@ Meteor.methods({
             //'submittedBy': Meteor.user().profile.name + "_" + Meteor.userId()
             'submittedBy': Meteor.userId(),
             //'submittedUser': Meteor.user().services.facebook.name
-            'submittedUser':Meteor.user().profile.name
+            'submittedUser': Meteor.user().profile.name
 
         });
         return questionId;
@@ -70,5 +79,17 @@ Meteor.methods({
             'num': 0
         });
         return answerId;
+    },
+    insertPermission: function (userId) {
+        console.log("add permission");
+        if (Permissions.findOne({userId: userId}) == null) {
+            var permissionId = Permissions.insert({
+                'userId': userId,
+                'questionPer': true,
+                'chatPer': true
+            });
+            return permissionId;
+        }
+
     }
 });

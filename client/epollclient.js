@@ -1,17 +1,28 @@
 /**
  * Created by shen on 15/9/1.
  */
-/**
- * Created by shen on 15/8/24.
- */
+
 
 
 Questions = new Mongo.Collection("questions");
 Answers = new Mongo.Collection("answers");
 Votes = new Mongo.Collection("votes");
+Permissions = new Mongo.Collection("permissions");
 
 Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
+});
+
+Router.map(function () {
+    this.route('home', {
+        path: '/',  //overrides the default '/home'
+        template: "home"
+    });
+    this.route('admin', {
+
+        path: '/admin',
+        template: "adminBoard"
+    });
 });
 
 
@@ -19,17 +30,21 @@ Template.addQuestion.events({
     "click input.add-question": function (event) {
 
         event.preventDefault();
-        var questionText = document.getElementById('questionText').value;
+        if (Permissions.findOne({userId: Meteor.userId()}).questionPer === true) {
+            var questionText = document.getElementById('questionText').value;
 
-        if (questionText !== "") {
-            Meteor.call("addQuestion", questionText, function (error, questionId) {
+            if (questionText !== "") {
+                Meteor.call("addQuestion", questionText, function (error, questionId) {
 
-                console.log("add question with id..." + questionId);
-            });
-            document.getElementById('questionText').value = "";
+                    console.log("add question with id..." + questionId);
+                });
+                document.getElementById('questionText').value = "";
+            }
+            else
+                return;
         }
-        else return;
-
+        else
+            return;
     }
 });
 
@@ -62,9 +77,7 @@ Template.question.helpers({
         else {
             return false;
         }
-
     }
-
 });
 
 Template.question.events({
@@ -96,7 +109,7 @@ Template.question.events({
             VerifyLogin();
             Meteor.call("addAnswer", selected_questionId, answerText, function (error, answerId) {
 
-                console.log("add answer with id..." + answerId);
+                console.log("add answer with id:" + answerId);
 
             });
             document.getElementById('answerText' + selected_questionId.toString()).value = "";
@@ -149,8 +162,13 @@ Template.answer.events({
 Template.login.events({
     'click #facebook-login': function (event) {
         Meteor.loginWithFacebook({}, function (err) {
+
             if (err) {
                 throw new Meteor.Error("facebook login failed");
+            }
+            else {
+                Meteor.call("insertPermission", Meteor.userId());
+                //alert(Meteor.userId());
             }
         });
     },
@@ -164,13 +182,6 @@ Template.login.events({
     }
 });
 
-/*Template.portraits.helpers({
- items: function () {
- var userId = Meteor.users.find({}, {fields: {"services.facebook.id": 1}});
- console.log(userId);
-
- }
- });*/
 
 Template.portrait.helpers({
 
@@ -182,6 +193,107 @@ Template.portrait.helpers({
          }*/
 
         return Meteor.users.find({}, {fields: {"services.facebook.id": 1}});
+
+    }
+});
+
+
+Template.admin.helpers({
+
+    //you can change it
+    isAdministrator: function () {
+
+        return Meteor.userId() === "5WSfdjaT7ZjDwWLjj"
+    }
+});
+
+
+Template.adminBoard.helpers({
+
+    users: function () {
+
+        return Meteor.users.find({}, {sort: {createAt: -1}});
+    },
+    settings: function () {
+        return {
+            rowsPerPage: 10,
+            showFilter: false,
+            fields: [
+                {key: 'profile.name', label: "Name", headerClass: "col-md-2"},
+                {
+                    key: 'createdAt', label: "Create date", headerClass: "col-md-2",
+                    fn: function (value) {
+                        return moment(new Date(value)).format("MM/DD/YYYY");
+                    }
+                },
+                {
+
+                    key: '_id',
+                    label: "Question", headerClass: "col-md-4",
+                    fn: function (value, object) {
+
+                        var quesPermission = Permissions.findOne({userId: value}).questionPer;
+
+                        //  return permission.questionPer;
+                        //return value;
+
+                        //need to be improved, ternary operator?
+                        if (quesPermission === true) {
+                            return new Spacebars.SafeString('Post question:&nbsp;' +
+                                '<input class="cbQuesPermis" type="checkbox" checked /> ');
+                        }
+                        else {
+                            return new Spacebars.SafeString('Post question:&nbsp;' +
+                                '<input class="cbQuesPermis" type="checkbox"  /> ');
+                        }
+
+                    }
+                },
+                {
+
+                    key: '_id',
+                    label: "Chat", headerClass: "col-md-4",
+                    fn: function (value, object) {
+
+                        var chatPermission = Permissions.findOne({userId: value}).chatPer;
+                        //  return permission.questionPer;
+                        //return value;
+
+                        //need to be improved, ternary operator?
+                        if (chatPermission === true) {
+                            return new Spacebars.SafeString('Multi-Dialog:&nbsp;' +
+                                '<input class="cbMulDialPermis" type="checkbox" checked /> ');
+                        }
+                        else {
+                            return new Spacebars.SafeString('Multi-Dialog:&nbsp;' +
+                                '<input class="cbMulDialPermis" type="checkbox"  /> ');
+                        }
+
+                    }
+                }
+            ]
+        }
+    }
+});
+
+
+Template.adminBoard.events({
+
+
+    'click .reactive-table tbody tr': function (event) {
+
+        event.preventDefault();
+
+
+        var permissionId = Permissions.findOne({userId: this._id})._id;
+        if (event.target.className == "cbQuesPermis") {
+
+            Permissions.update(permissionId, {$set: {questionPer: event.target.checked}});
+        }
+        if (event.target.className == "cbMulDialPermis") {
+
+            Permissions.update(permissionId, {$set: {chatPer: event.target.checked}});
+        }
 
     }
 });
