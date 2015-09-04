@@ -204,7 +204,7 @@ Template.admin.helpers({
     //you can change it
     isAdministrator: function () {
 
-        return Meteor.userId() === "5WSfdjaT7ZjDwWLjj"
+        return Meteor.userId() === "cQaF5q4xjraPxhLrs"
     }
 });
 
