@@ -1,0 +1,40 @@
+<template name="message">
+	{{#each getMessage}}
+		{{#if isCurrentUser user_id}}
+			<!-- this is  -->
+			<div class="self">
+      			
+      			<div class="messages">
+      				<p>{{messageContent}}
+					</p>
+      				<time datetime="2009-11-13T20:00+00:00">{{time}}</time>
+      			</div>	<!--end of div messages-->
+
+      			<div class="avatar">
+      			<img src="https://graph.facebook.com/{{avatar_id}}/picture?type=small" /> 
+      			</div>	<!--end of div avatar-->
+
+    		</div>	<!--end of div self-->
+    	{{else}}
+    		
+    		<div class="other">
+      		
+      			<div class="avatar">
+      				<img src="https://graph.facebook.com/{{avatar_id}}/picture?type=small" /> 
+      			</div>	<!--end of div avatar-->
+
+      			<div class="messages">
+      				<p>{{messageContent}}
+					</p>
+      				<time datetime="2009-11-13T20:00+00:00">{{time}}</time>
+      			</div>	<!--end of div messages-->
+    		
+    		</div>	<!--end of div other-->
+		{{/if}}
+
+	{{/each}}
+</template>
+
+<template name="inputMessage">
+	<input id="inputBox" type="text"  placeholder="input your message here"/>
+</template>
