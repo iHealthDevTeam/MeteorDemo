@@ -8,6 +8,8 @@ Questions = new Mongo.Collection("questions");
 Answers = new Mongo.Collection("answers");
 Votes = new Mongo.Collection("votes");
 Permissions = new Mongo.Collection("permissions");
+Messages = new Mongo.Collection("messages");
+
 
 Meteor.startup(function () {
     // code to run on server at startup
@@ -90,6 +92,16 @@ Meteor.methods({
             });
             return permissionId;
         }
-
+    },
+    saveMessage: function (user,messageContent){
+        console.log("user is: ",user," message is: ",messageContent);
+        var messageId = Messages.insert({
+            'user_id': user._id,
+            'name': user.profile.name,
+            'time': new Date(),
+            'avatar_id': user.services.facebook.id,
+            'messageContent': messageContent
+        });
+        return messageId;
     }
 });

@@ -8,6 +8,7 @@ Questions = new Mongo.Collection("questions");
 Answers = new Mongo.Collection("answers");
 Votes = new Mongo.Collection("votes");
 Permissions = new Mongo.Collection("permissions");
+Messages = new Mongo.Collection("messages");
 
 Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
@@ -298,6 +299,30 @@ Template.adminBoard.events({
     }
 });
 
+Template.message.helpers({
+    getMessage: function(){
+        return Messages.find();
+    },
+
+    isCurrentUser: function(messageUserId){
+        console.log(messageUserId," ",Meteor.userId);
+        return messageUserId == Meteor.userId();
+    }
+});
+
+Template.inputMessage.events({
+    'keypress #inputBox': function (event){
+        if (event.which == 13){
+            if (Meteor.user()){
+                var messageContent = document.getElementById("inputBox").value;
+                document.getElementById("inputBox").value ="";
+                Meteor.call('saveMessage',Meteor.user(),messageContent,function(error,result){
+                 console.log("error: ",error," result: ",result);
+                });
+            }
+        }
+    }
+});
 // Template.loginFacebook.events({
 
 //     "click #facebook-login": function (event) {
