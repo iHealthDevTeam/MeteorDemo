@@ -92,6 +92,7 @@ Meteor.methods({
             });
             return permissionId;
         }
+    },
     saveMessage: function (user,messageContent){
         console.log("user is: ",user," message is: ",messageContent);
         var messageId = Messages.insert({
