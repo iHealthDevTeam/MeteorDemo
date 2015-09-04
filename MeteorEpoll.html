@@ -17,16 +17,44 @@
 
         {{>questions}}
 
-
     </div>
 
     <div class="footer">
         <p>&copy;2015 iHealthLabs Europe Inc. All rights reserved.</p>
     </div>
 
+
+<section class="module">
+
+  <div id="header">
+    <p>Hangouts</p>
+    <button id="close">&#10006;</button>
+    <button id="minimize">-</button>
+  </div><!--end of div header-->
+  <div id="conversation">
+    {{>message}}
+  </div>	<!--end of div conversation-->
+
+  <div id="inputMessage">
+    {{>inputMessage}}
+  </div> <!--end of div inputMessage-->
+</section>
+
+<div class="footer">
+    <p>&copy;2015 iHealthLabs Europe Inc. All rights reserved.</p>
+</div>
+
+
+</body>
+
     </body>
 
 </template>
+
+
+
+
+
 
 
 
