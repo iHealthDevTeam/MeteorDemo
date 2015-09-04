@@ -11,10 +11,11 @@
 
 .footer {
     position: fixed;
-    height: 50px;
+    height: 30px;
     bottom: 0;
     width: 100%;
     text-align: center;
+    z-index: 1;
 }
 
 #containerFacebook button{
@@ -50,4 +51,207 @@ button#facebook-login {
 button#facebook-logout {
 
 }
+
+
+.module{
+    position:fixed;
+    right:10px;
+    bottom: 30px;
+    height:400px;
+    width:280px;
+    border:1px solid #CCCCCC ;
+}
+
+#header{
+    padding-left:6px;
+    color:#000;
+    position:relative;
+    height:36px;
+}
+
+#header > p{
+  color:#fff;
+  padding-top: 5px;
+  font-size: 20pt;
+  display: inline-block;
+  width: 80%;
+}
+
+#header > button{
+
+  background-color: transparent;
+  border-style: none;
+}
+
+#close{
+  position:relative;
+  top:-2px;
+  left:2px;
+}
+
+#minimize{
+  font-size: 20pt;
+  font-weight: bold;
+  position:relative;
+  top:-4px;
+}
+
+#header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.25;
+  background: radial-gradient(white, black);
+  z-index: -10;
+}
+
+
+#header::before {
+  animation: pulse 5s ease alternate infinite;
+}
+@keyframes pulse {
+  from { opacity: 0.3; }
+  to { opacity: 0.7; }
+}
+
+
+#conversation{
+    overflow-y: scroll;
+    height:79%;
+    background-color:#E5E5E5;
+    padding-bottom: 8px;
+}
+
+.other{
+  margin-top: 15px;
+  display: inline-block;
+}
+.other >.avatar{
+  display: inline;
+    margin-left:8px;
+    /*margin-top:4px;*/
+    height: 30px;
+    width:30px;
+    float:left;
+    background-color: rgba(0,0,0,0.5);
+}
+.other >.avatar img{
+    height:30px;
+    width:30px;
+}
+
+.other >.messages{
+    clear:left;
+    display: inline-block;
+    position:relative;
+    background-color:#fff;
+    width:214px;
+    /*top:4px;*/
+    left:9px;
+    /*top:-31px; */
+    margin-right: 10px;
+    border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+.other >.messages:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -8px;
+  right: auto;
+  top: 0px;
+  bottom: auto;
+  border: 6px solid;
+  border-color: white white transparent transparent;
+}
+
+.other >.messages p{
+  margin-bottom:0px;
+      padding-left:3px;
+}
+
+.other >.messages time{
+    font-size:70%;
+    color:#E9E9E9;
+    position:relative;
+    top:0px;
+    height: 10px;
+}
+
+
+.self{
+  margin-top: 15px;
+  display: inline-block;
+}
+.self >.avatar{
+    /*margin-right:;*/
+    margin-left:10px;
+    /*margin-top:4px;*/
+    height: 30px;
+    width:30px;
+    clear:left;
+    display: inline;
+    background-color: rgba(0,0,0,0.5);
+}
+.self >.avatar img{
+    height:30px;
+    width:30px;
+}
+
+.self >.messages{
+    float:left;
+    display: inline;
+    position:relative;
+    background-color:#fff;
+    width:214px;
+    margin-left: 5px;
+    /*top:-31px; */
+    /*margin-right: 10px;*/
+    border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+.self >.messages:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: -8px;
+  top: 0px;
+  bottom: auto;
+  border: 10px solid;
+  border-color: white transparent transparent white;
+}
+
+.self >.messages p{
+  margin-bottom:0px;
+      padding-left:3px;
+}
+
+.self >.messages time{
+    font-size:70%;
+    color:#E9E9E9;
+    position:relative;
+    top:0px;
+    height: 10px;
+}
+
+#inputMessage{
+
+}
+#inputMessage input{
+  width:95%;
+  height:30px;
+  overflow-y:scroll;
+}
+
+
 
