@@ -233,6 +233,8 @@ button#facebook-logout {
 .self >.messages p{
   margin-bottom:0px;
       padding-left:3px;
+      padding-right: 3px;
+      overflow-wrap: break-word;
 }
 
 .self >.messages time{

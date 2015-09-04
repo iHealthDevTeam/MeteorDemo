@@ -26,44 +26,15 @@
     <p>Hangouts</p>
     <button id="close">&#10006;</button>
     <button id="minimize">-</button>
-  </div>
+  </div><!--end of div header-->
   <div id="conversation">
-    <div class="other">
-
-      <div class="avatar">
-      	<img src="https://pixabay.com/static/uploads/photo/2014/04/02/14/10/female-306407_640.png" /> 
-      </div>	<!--end of div avatar-->
-
-      <div class="messages">
-      	<p>
-		</p>
-      	<time datetime="2009-11-13T20:00+00:00">8pm on my birthday</time>
-      </div>	<!--end of div messages-->
-    </div>	<!--end of div other-->
-
-    <div class="self">
-      <div class="messages">
-      	<p>变位提示：asdhfask
-		</p>
-      	<time datetime="2009-11-13T20:00+00:00">8pm on my birthday</time>
-      </div>	<!--end of div messages-->
-
-      <div class="avatar">
-      	<img src="https://pixabay.com/static/uploads/photo/2014/04/02/14/10/female-306407_640.png" /> 
-      </div>	<!--end of div avatar-->
-
-    </div>	<!--end of div self-->
-
-       
-
-
+    {{>message}}
   </div>	<!--end of div conversation-->
 
   <div id="inputMessage">
-    <input type="text"  placeholder="input your message here"/>
+    {{>inputMessage}}
   </div> <!--end of div inputMessage-->
 </section>
-
 
 <div class="footer">
     <p>&copy;2015 iHealthLabs Europe Inc. All rights reserved.</p>
