@@ -21,10 +21,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="epollclient.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="epollclient.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/epollclient.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2088167">
+            <state vertical-scroll-proportion="0.0">
               <caret line="231" column="14" selection-start-line="231" selection-start-column="14" selection-end-line="231" selection-end-column="14" />
               <folding>
                 <element signature="e#0#37#0" expanded="false" />
@@ -33,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MeteorEpoll.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MeteorEpoll.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MeteorEpoll.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.7563805">
+              <caret line="256" column="0" selection-start-line="256" selection-start-column="0" selection-end-line="256" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -102,9 +102,9 @@
         <option value="$PROJECT_DIR$/MeteorEpoll.html" />
         <option value="$PROJECT_DIR$/server/epollserver.js" />
         <option value="$PROJECT_DIR$/server/social-config.js" />
-        <option value="$PROJECT_DIR$/MeteorEpoll.css" />
         <option value="$PROJECT_DIR$/template/admin.html" />
         <option value="$PROJECT_DIR$/client/epollclient.js" />
+        <option value="$PROJECT_DIR$/MeteorEpoll.css" />
       </list>
     </option>
   </component>
@@ -656,14 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MeteorEpoll.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/admin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -674,11 +666,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/epollclient.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2088167">
+        <state vertical-scroll-proportion="0.0">
           <caret line="231" column="14" selection-start-line="231" selection-start-column="14" selection-end-line="231" selection-end-column="14" />
           <folding>
             <element signature="e#0#37#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MeteorEpoll.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7563805">
+          <caret line="256" column="0" selection-start-line="256" selection-start-column="0" selection-end-line="256" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
