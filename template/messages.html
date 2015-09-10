@@ -1,4 +1,5 @@
 <template name="message">
+<div id="conversation">
 	{{#each getMessage}}
 		{{#if isCurrentUser user_id}}
 
@@ -33,6 +34,7 @@
 		{{/if}}
 
 	{{/each}}
+</div>  <!--end of div conversation-->
 </template>
 
 <template name="inputMessage">
