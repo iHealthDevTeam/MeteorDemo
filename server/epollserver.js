@@ -77,7 +77,7 @@ Meteor.methods({
             'answerText': text,
             'submittedOn': new Date(),
             'submittedBy': Meteor.userId(),
-            'submittedUser': Meteor.user().username,
+            'submittedUser': Meteor.user().profile.name,
             'num': 0
         });
         return answerId;
