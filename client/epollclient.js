@@ -14,17 +14,7 @@ Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
 });
 
-Router.map(function () {
-    this.route('home', {
-        path: '/',  //overrides the default '/home'
-        template: "home"
-    });
-    this.route('admin', {
 
-        path: '/admin',
-        template: "adminBoard"
-    });
-});
 
 
 Template.addQuestion.events({
@@ -204,7 +194,7 @@ Template.admin.helpers({
     //you can change it
     isAdministrator: function () {
 
-        return Meteor.userId() === "cQaF5q4xjraPxhLrs"
+        return Meteor.userId() === "5WSfdjaT7ZjDwWLjj"
     }
 });
 
